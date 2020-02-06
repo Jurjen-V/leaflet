@@ -36,6 +36,7 @@
             <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button">3D</button>
             <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" >Satellite</button> 
             <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" >Kaart</button>
+            <button type="button" id="Btn5" value="route" onclick="route(current_position,marker )" class="btnStyle span3 leaflet-control Button" >ROUTE</button>
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button1"> <i class='material-icons'>my_location</i></button>
@@ -255,13 +256,14 @@ map.on('locationerror', onLocationError);
 //route
 var dir;
 
-function route(){
+function route(latlng, latlng2){
+    console.log(latlng2);  
     dir = MQ.routing.directions();
 
     dir.route({
         locations: [
-            { latLng: { lat: 53.033718, lng: 5.661130 }},
-            { latLng: { lat: 53.201233, lng: 5.799913}}
+            { latLng: { lat: latlng._latlng.lat, lng: latlng._latlng.lng }},
+            { latLng: { lat: latlng2._latlng.lat, lng: latlng2._latlng.lng}}
         ]
     });
 
@@ -270,8 +272,6 @@ function route(){
         fitBounds: true
     }));
 }
-
-route();
 
 
 
