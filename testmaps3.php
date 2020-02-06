@@ -15,6 +15,13 @@
     <script src="https://cdn.osmbuildings.org/classic/0.2.2b/OSMBuildings-Leaflet.js"></script>  
     <script src="//cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+<script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+<script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
+
 </head>
 <body>
 <div class="span9" style="height:100%">
@@ -59,9 +66,9 @@
   }
   .Button:hover, .Button1:hover{
     cursor: pointer;
-    background-color: #cad3e0;
+    background-color:#4285f4;
     border: none;
-    color: black;
+    color: white;
   }
   .active {
       background-color: #4285f4;
@@ -209,16 +216,15 @@ map.on('locationerror', onLocationError);
       marker.dragging.disable()
       marker.dragging.enable();
     });
+var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
-    var searchControl = new L.esri.Controls.Geosearch().addTo(map);
+  var results = new L.LayerGroup().addTo(map);
 
-    var results = new L.LayerGroup().addTo(map);
-
-              searchControl.on('results', function(data){
-                results.clearLayers();
-                for (var i = data.results.length - 1; i >= 0; i--) {
-                  results.addLayer(L.marker(data.results[i].latlng));
-                }
-              });
+  searchControl.on('results', function(data){
+    results.clearLayers();
+    for (var i = data.results.length - 1; i >= 0; i--) {
+      results.addLayer(L.marker(data.results[i].latlng));
+    }
+  });
 
 </script>
