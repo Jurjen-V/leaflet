@@ -253,6 +253,7 @@ map.on('locationerror', onLocationError);
 //route
 var dir;
 var rlayer = null;
+
 function route(latlng, latlng2){
     dir = MQ.routing.directions();
     dir.route({
@@ -261,18 +262,11 @@ function route(latlng, latlng2){
             { latLng: { lat: latlng2._latlng.lat, lng: latlng2._latlng.lng}}
         ]
     });
-    if(rlayer) {
-      map.removeLayer(rlayer);
-      rlayer = null;
-    } else {
-        map.removeLayer(rlayer);
-        var routing = MQ.Routing.routeLayer({
-            directions: dir,
-            fitBounds: true
-        });
-        rlayer = L.layerGroup([routing]);
-        map.addLayer(rlayer);
-    }
+
+    map.addLayer(MQ.routing.routeLayer({
+        directions: dir,
+        fitBounds: true
+    }));
 }
 
 </script>
