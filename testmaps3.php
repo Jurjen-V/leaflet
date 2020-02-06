@@ -227,8 +227,8 @@ map.on('locationerror', onLocationError);
       marker.dragging.disable()
       marker.dragging.enable();
     });
-var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 
+ var searchControl = new L.esri.Controls.Geosearch().addTo(map);
   var results = new L.LayerGroup().addTo(map);
 
   searchControl.on('results', function(data){
