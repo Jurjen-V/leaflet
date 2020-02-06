@@ -13,6 +13,7 @@
     crossorigin=""></script>
     <link href="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyB5FoasQwCg9CU7lUHnAq31xo8XfDBxVhk">
     <script src="https://cdn.osmbuildings.org/classic/0.2.2b/OSMBuildings-Leaflet.js"></script>  
+    <script src="//cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -99,6 +100,9 @@ function loadkaart(loadmap){
         var osm = document.getElementById("Btn1");
         var satellite = document.getElementById("Btn2");
         var normal = document.getElementById("Btn3");
+        osm.disabled = true;
+        satellite.disabled = false;
+        normal.disabled = false;
         osm.classList.add("active");
         satellite.classList.remove("active");
         normal.classList.remove("active");
@@ -120,6 +124,9 @@ function loadkaart(loadmap){
         var osm = document.getElementById("Btn1");
         var satellite = document.getElementById("Btn2");
         var normal = document.getElementById("Btn3");
+        osm.disabled = false;
+        satellite.disabled = true;
+        normal.disabled = false;
         osm.classList.remove("active");
         satellite.classList.add("active");
         normal.classList.remove("active");
@@ -140,6 +147,9 @@ function loadkaart(loadmap){
         var osm = document.getElementById("Btn1");
         var satellite = document.getElementById("Btn2");
         var normal = document.getElementById("Btn3");
+        osm.disabled = false;
+        satellite.disabled = false;
+        normal.disabled = true;
         osm.classList.remove("active");
         satellite.classList.remove("active");
         normal.classList.add("active");
@@ -199,5 +209,16 @@ map.on('locationerror', onLocationError);
       marker.dragging.disable()
       marker.dragging.enable();
     });
+
+    var searchControl = new L.esri.Controls.Geosearch().addTo(map);
+
+    var results = new L.LayerGroup().addTo(map);
+
+              searchControl.on('results', function(data){
+                results.clearLayers();
+                for (var i = data.results.length - 1; i >= 0; i--) {
+                  results.addLayer(L.marker(data.results[i].latlng));
+                }
+              });
 
 </script>
