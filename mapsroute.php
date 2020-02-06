@@ -36,7 +36,7 @@
             <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button">3D</button>
             <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" >Satellite</button> 
             <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" >Kaart</button>
-            <button type="button" id="Btn5" value="route" onclick="route(current_position,marker )" class="btnStyle span3 leaflet-control Button" >ROUTE</button>
+            <button type="button" id="Btn5" value="route" onclick="route(current_position,marker );" class="btnStyle span3 leaflet-control Button" >ROUTE</button>
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button1"> <i class='material-icons'>my_location</i></button>
@@ -92,7 +92,7 @@
 </style>
 <script type="text/javascript">
 var loadmap = 'normal';
-var current_position , circle, polyline, marker;
+var current_position , circle, polyline, marker, dir, routelayer;
 var i = 0;
 var map = new L.map('map',{
     layers: MQ.mapLayer(),
@@ -247,17 +247,23 @@ map.on('locationerror', onLocationError);
   searchControl.on('results', function(data){
     results.clearLayers();
     for (var i = data.results.length - 1; i >= 0; i--) {
-      results.addLayer(L.marker(data.results[i].latlng));
+      results.addLayer(marker = L.marker(data.results[i].latlng));
     }
   });
 //schaal
   L.control.scale().addTo(map);
 
 //route
-var dir;
-
 function route(latlng, latlng2){
-    console.log(latlng2);  
+    
+    //remove layer!!!!!!!!!!!!
+
+if(MQ){
+    map.removeLayer(MQ);
+    console.log("REMOVED!");
+}
+
+
     dir = MQ.routing.directions();
 
     dir.route({
@@ -266,11 +272,12 @@ function route(latlng, latlng2){
             { latLng: { lat: latlng2._latlng.lat, lng: latlng2._latlng.lng}}
         ]
     });
-
-    map.addLayer(MQ.routing.routeLayer({
+    
+    routelayer = map.addLayer(MQ.routing.routeLayer({
         directions: dir,
         fitBounds: true
     }));
+
 }
 
 </script>
