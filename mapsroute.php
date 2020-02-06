@@ -39,7 +39,7 @@
             <button type="button" id="Btn5" value="route" onclick="route(current_position,marker );" class="btnStyle span3 leaflet-control Button" >ROUTE</button>
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
-            <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button1"> <i class='material-icons'>my_location</i></button>
+            <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
         </div>
     </div>
 </div>
@@ -56,20 +56,17 @@
     right: 0px;
     bottom: 90px;
   }
-  .Button, .Button1{
+  .Button{
     background-color: white;
     border: none;
     color: black;
-    padding: 10px 15px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     clear: both ;
     display:inline-block ;
     float: none !important;
-  }
-  .Button1{
-    padding: 5px;
   }
   .Button:hover, .Button1:hover{
     cursor: pointer;
@@ -265,7 +262,6 @@ if(MQ){
 
 
     dir = MQ.routing.directions();
-
     dir.route({
         locations: [
             { latLng: { lat: latlng._latlng.lat, lng: latlng._latlng.lng }},
