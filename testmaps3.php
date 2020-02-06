@@ -227,6 +227,7 @@ map.on('locationerror', onLocationError);
       marker.dragging.enable();
     });
 
+//zoekbalk
  var searchControl = new L.esri.Controls.Geosearch().addTo(map);
   var results = new L.LayerGroup().addTo(map);
 
@@ -236,5 +237,8 @@ map.on('locationerror', onLocationError);
       results.addLayer(L.marker(data.results[i].latlng));
     }
   });
+//schaal
+  L.control.scale().addTo(map);
 
+//route
 </script>
