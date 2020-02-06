@@ -33,10 +33,10 @@
 <div class="span9" style="height:100%">
     <div id="map">
         <div class="leaflet-bottom leaflet-right button_box" style="display:inline-block;">
-            <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button"><i class="material-icons">3d_rotation</i></button>
-            <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">satellite</i></button> 
-            <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">map</i></button>
-            <button type="button" id="Btn5" value="route" onclick="route(current_position,marker )" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">directions</i></button>
+            <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button">3D</button>
+            <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" >Satellite</button> 
+            <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" >Kaart</button>
+            <button type="button" id="Btn5" value="route" onclick="route(current_position,marker );" class="btnStyle span3 leaflet-control Button" >ROUTE</button>
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
@@ -89,7 +89,7 @@
 </style>
 <script type="text/javascript">
 var loadmap = 'normal';
-var current_position , circle, polyline, marker;
+var current_position , circle, polyline, marker, dir, routelayer;
 var i = 0;
 var map = new L.map('map',{
     layers: MQ.mapLayer(),
@@ -244,7 +244,7 @@ map.on('locationerror', onLocationError);
   searchControl.on('results', function(data){
     results.clearLayers();
     for (var i = data.results.length - 1; i >= 0; i--) {
-      results.addLayer(L.marker(data.results[i].latlng));
+      results.addLayer(marker = L.marker(data.results[i].latlng));
     }
   });
 //schaal
@@ -254,6 +254,15 @@ map.on('locationerror', onLocationError);
 var dir;
 var rlayer = null;
 function route(latlng, latlng2){
+    
+    //remove layer!!!!!!!!!!!!
+
+if(MQ){
+    map.removeLayer(MQ);
+    console.log("REMOVED!");
+}
+
+
     dir = MQ.routing.directions();
     dir.route({
         locations: [
