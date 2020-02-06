@@ -193,23 +193,26 @@ function onLocationFound(e) {
     map.addLayer(circle);
     map.addLayer(current_position);
 }
+
+//set vieuw on yourlocation
 function setview(e){
     var latview = e._latlng.lat;
     var lngview = e._latlng.lng;
     map.panTo(new L.LatLng(latview, lngview));
 }
+
+//onlocationfound
 map.on('locationfound', onLocationFound);
 function onLocationError(e) {
     alert(e.message);
 }
+
+//on errors
 map.on('locationerror', onLocationError);
+
+//onclick map
 //set marker
     map.on('click', function (position) {
-        
-        // document.getElementById('btn1').onclick = function () {
-        //     alert("button1 was clicked")
-        // }​;
-
       if (marker) {
         map.removeLayer(marker);
       }
@@ -217,16 +220,4 @@ map.on('locationerror', onLocationError);
       marker.dragging.disable()
       marker.dragging.enable();
     });
-
-    var searchControl = new L.esri.Controls.Geosearch().addTo(map);
-
-    var results = new L.LayerGroup().addTo(map);
-
-              searchControl.on('results', function(data){
-                results.clearLayers();
-                for (var i = data.results.length - 1; i >= 0; i--) {
-                  results.addLayer(L.marker(data.results[i].latlng));
-                }
-              });
-
 </script>
