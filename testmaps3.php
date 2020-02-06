@@ -206,9 +206,9 @@ map.on('locationerror', onLocationError);
 //set marker
     map.on('click', function (position) {
         
-        document.getElementById('btn1').onclick = function () {
-            alert("button1 was clicked")
-        }​;
+        // document.getElementById('btn1').onclick = function () {
+        //     alert("button1 was clicked")
+        // }​;
 
       if (marker) {
         map.removeLayer(marker);
