@@ -21,12 +21,19 @@
 <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
 
+<!-- route -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script> -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.5/leaflet-routing-machine.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.5/leaflet-routing-machine.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/perliedman-leaflet-control-geocoder/1.5.5/Control.Geocoder.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/perliedman-leaflet-control-geocoder/1.5.5/Control.Geocoder.min.css">
 </head>
 <body>
 <div class="span9" style="height:100%">
     <div id="map">
         <div class="leaflet-bottom leaflet-right button_box" style="display:inline-block;">
-            <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button">OSM</button>
+            <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button">3D</button>
             <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" >Satellite</button> 
             <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" >Kaart</button>
         </div>
@@ -87,6 +94,7 @@ var loadmap = 'normal';
 var current_position , circle, polyline, marker;
 var i = 0;
 var map = new L.map('map',{
+    zoom: 15,
     zoomControl: false,
 }).fitWorld();
 L.control.zoom({
@@ -100,7 +108,8 @@ function loadkaart(loadmap){
             // attribution: '© Map <a href="https://mapbox.com">Mapbox</a>',
             maxZoom: 20,
             maxNativeZoom: 18,
-            minZoom: 5
+            minZoom: 5,
+            zoom: 16,
         }).addTo(map);
         var osmb = new OSMBuildings(map).load('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
         var osm = document.getElementById("Btn1");
@@ -123,6 +132,7 @@ function loadkaart(loadmap){
             // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 20,
             minZoom: 5,
+            zoom: 16,
             // id: 'mapbox/streets-v11',
             id: 'mapbox/satellite-v9',
             accessToken: 'pk.eyJ1Ijoib3NtYnVpbGRpbmdzIiwiYSI6IjNldU0tNDAifQ.c5EU_3V8b87xO24tuWil0w'
@@ -147,6 +157,7 @@ function loadkaart(loadmap){
             // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 20,
             minZoom: 5,
+            zoom: 16,      
             id: 'mapbox/streets-v11',
             accessToken: 'pk.eyJ1Ijoib3NtYnVpbGRpbmdzIiwiYSI6IjNldU0tNDAifQ.c5EU_3V8b87xO24tuWil0w'
         }).addTo(map);
@@ -241,4 +252,13 @@ map.on('locationerror', onLocationError);
   L.control.scale().addTo(map);
 
 //route
+var control = L.Routing.control({
+  router: new L.Routing.osrmv1({
+    language: 'en',
+    profile: 'car'
+  }),
+  geocoder: L.Control.Geocoder.nominatim({})
+}).addTo(map);
+
+
 </script>
