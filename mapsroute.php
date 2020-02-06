@@ -255,6 +255,9 @@ var dir;
 var rlayer = null;
 
 function route(latlng, latlng2){
+
+    loadkaart('normal');
+
     dir = MQ.routing.directions();
     dir.route({
         locations: [
