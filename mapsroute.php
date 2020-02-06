@@ -244,7 +244,7 @@ map.on('locationerror', onLocationError);
   searchControl.on('results', function(data){
     results.clearLayers();
     for (var i = data.results.length - 1; i >= 0; i--) {
-      results.addLayer(L.marker(data.results[i].latlng));
+      results.addLayer(marker = L.marker(data.results[i].latlng));
     }
   });
 //schaal
