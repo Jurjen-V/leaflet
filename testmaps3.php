@@ -14,7 +14,7 @@
     <link href="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyB5FoasQwCg9CU7lUHnAq31xo8XfDBxVhk">
     <script src="https://cdn.osmbuildings.org/classic/0.2.2b/OSMBuildings-Leaflet.js"></script>  
     <script src="//cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
       <!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" /> -->
 <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
@@ -45,6 +45,14 @@
 </body>
 </html>
 <style type="text/css">
+    .leaflet-left{
+        position: absolute;
+        bottom: 0px;
+        
+    }
+    .leaflet-top{
+        width: 100%;
+    }
   .button_box{
     position: absolute;
     right: 50px;
@@ -94,7 +102,7 @@ var loadmap = 'normal';
 var current_position , circle, polyline, marker;
 var i = 0;
 var map = new L.map('map',{
-    zoom: 15,
+    zoom: 16,
     zoomControl: false,
 }).fitWorld();
 L.control.zoom({
@@ -237,8 +245,7 @@ map.on('locationerror', onLocationError);
       marker.dragging.disable()
       marker.dragging.enable();
     });
-
-//zoekbalk
+// search
  var searchControl = new L.esri.Controls.Geosearch().addTo(map);
   var results = new L.LayerGroup().addTo(map);
 
@@ -259,6 +266,17 @@ map.on('locationerror', onLocationError);
 //   }),
 //   geocoder: L.Control.Geocoder.nominatim({})
 // }).addTo(map);
+// routing
+var control = L.Routing.control({
+  router: new L.Routing.osrmv1({
+    language: 'nl',
+    profile: 'car'
+  }),
+   lineOptions : {
+        addWaypoints: false
+    },
+  geocoder: L.Control.Geocoder.nominatim({})
+}).addTo(map);
 
 
 </script>

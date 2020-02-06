@@ -273,6 +273,4 @@ function route(latlng, latlng2){
     }));
 }
 
-
-
 </script>
