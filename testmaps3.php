@@ -16,8 +16,7 @@
     <script src="//cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+      <!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" /> -->
 <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
 <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
@@ -101,7 +100,7 @@ function loadkaart(loadmap){
             // attribution: '© Map <a href="https://mapbox.com">Mapbox</a>',
             maxZoom: 20,
             maxNativeZoom: 18,
-            minZoom: 17
+            minZoom: 5
         }).addTo(map);
         var osmb = new OSMBuildings(map).load('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
         var osm = document.getElementById("Btn1");
@@ -123,7 +122,7 @@ function loadkaart(loadmap){
         new L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 20,
-            minZoom: 17,
+            minZoom: 5,
             // id: 'mapbox/streets-v11',
             id: 'mapbox/satellite-v9',
             accessToken: 'pk.eyJ1Ijoib3NtYnVpbGRpbmdzIiwiYSI6IjNldU0tNDAifQ.c5EU_3V8b87xO24tuWil0w'
@@ -147,7 +146,7 @@ function loadkaart(loadmap){
         new L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 20,
-            minZoom: 17,
+            minZoom: 5,
             id: 'mapbox/streets-v11',
             accessToken: 'pk.eyJ1Ijoib3NtYnVpbGRpbmdzIiwiYSI6IjNldU0tNDAifQ.c5EU_3V8b87xO24tuWil0w'
         }).addTo(map);
@@ -185,17 +184,17 @@ function onLocationFound(e) {
         map.removeLayer(circle);
     }
 //set location
-    current_position = new L.circle(e.latlng, {
+    current_position = new L.circleMarker(e.latlng, {
         color: 'white',
         fillColor: '#4285f4',
-        radius: 3.5,
+        radius: 10,
         fillOpacity: 1,
     }).addTo(map);
-    circle = new L.circle(e.latlng, {
+    circle = new L.circleMarker(e.latlng, {
         color: '#d3e2f9',
         fillColor: '#d3e2f9',
         fillOpacity: 0.5,
-        radius: 7
+        radius: 12
     }).addTo(map);
     map.addLayer(circle);
     map.addLayer(current_position);
