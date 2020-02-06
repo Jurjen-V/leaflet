@@ -220,7 +220,7 @@ function setview(e){
 }
 
 //onlocationfound
-map.on('locationfound', onLocationFound);
+map.on('locationfound', onLocationFound, route);
 function onLocationError(e) {
     alert(e.message);
 }
@@ -254,13 +254,12 @@ map.on('locationerror', onLocationError);
 
 //route
 var dir;
-
-function route(){
+function route(e){
     dir = MQ.routing.directions();
-
+    console.log(e._latlng.latlng);
     dir.route({
         locations: [
-            { latLng: { lat: 53.033718, lng: 5.661130 }},
+            { latLng: { lat: e._latlng.lat, lng: e._latlng.lng }},
             { latLng: { lat: 53.201233, lng: 5.799913}}
         ]
     });
@@ -270,10 +269,4 @@ function route(){
         fitBounds: true
     }));
 }
-
-route();
-</script>
-
-
-
 </script>
