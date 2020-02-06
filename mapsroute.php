@@ -33,13 +33,13 @@
 <div class="span9" style="height:100%">
     <div id="map">
         <div class="leaflet-bottom leaflet-right button_box" style="display:inline-block;">
-            <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button">3D</button>
-            <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" >Satellite</button> 
-            <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" >Kaart</button>
-            <button type="button" id="Btn5" value="route" onclick="route(current_position,marker )" class="btnStyle span3 leaflet-control Button" >ROUTE</button>
+            <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button"><i class="material-icons">3d_rotation</i></button>
+            <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">satellite</i></button> 
+            <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">map</i></button>
+            <button type="button" id="Btn5" value="route" onclick="route(current_position,marker )" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">directions</i></button>
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
-            <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button1"> <i class='material-icons'>my_location</i></button>
+            <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
         </div>
     </div>
 </div>
@@ -56,20 +56,17 @@
     right: 0px;
     bottom: 90px;
   }
-  .Button, .Button1{
+  .Button{
     background-color: white;
     border: none;
     color: black;
-    padding: 10px 15px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     clear: both ;
     display:inline-block ;
     float: none !important;
-  }
-  .Button1{
-    padding: 5px;
   }
   .Button:hover, .Button1:hover{
     cursor: pointer;
@@ -221,7 +218,7 @@ function setview(e){
 }
 
 //onlocationfound
-map.on('locationfound', onLocationFound, route);
+map.on('locationfound', onLocationFound);
 function onLocationError(e) {
     alert(e.message);
 }
@@ -257,9 +254,7 @@ map.on('locationerror', onLocationError);
 var dir;
 
 function route(latlng, latlng2){
-    console.log(latlng2);  
     dir = MQ.routing.directions();
-    console.log(e._latlng.latlng);
     dir.route({
         locations: [
             { latLng: { lat: latlng._latlng.lat, lng: latlng._latlng.lng }},
