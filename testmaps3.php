@@ -168,8 +168,11 @@ function loadkaart(loadmap){
     }
     
 }
+
 loadkaart(loadmap);
 map.locate({watch: true, setView: false, maxZoom: 18, enableHighAccuracy: true});
+
+
 function onLocationFound(e) {
     if(i == 0){
         map.panTo(new L.LatLng(e.latitude, e.longitude));
@@ -197,16 +200,24 @@ function onLocationFound(e) {
     map.addLayer(circle);
     map.addLayer(current_position);
 }
+
+//set vieuw on yourlocation
 function setview(e){
     var latview = e._latlng.lat;
     var lngview = e._latlng.lng;
     map.panTo(new L.LatLng(latview, lngview));
 }
+
+//onlocationfound
 map.on('locationfound', onLocationFound);
 function onLocationError(e) {
     alert(e.message);
 }
+
+//on errors
 map.on('locationerror', onLocationError);
+
+//onclick map
 //set marker
     map.on('click', function (position) {
       if (marker) {
