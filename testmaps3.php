@@ -255,6 +255,17 @@ map.on('locationerror', onLocationError);
       results.addLayer(L.marker(data.results[i].latlng));
     }
   });
+//schaal
+  L.control.scale().addTo(map);
+
+//route
+// var control = L.Routing.control({
+//   router: new L.Routing.osrmv1({
+//     language: 'en',
+//     profile: 'car'
+//   }),
+//   geocoder: L.Control.Geocoder.nominatim({})
+// }).addTo(map);
 // routing
 var control = L.Routing.control({
   router: new L.Routing.osrmv1({

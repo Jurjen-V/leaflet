@@ -16,6 +16,7 @@
     <script src="//cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
     <!-- icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- route -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=AabzipTGobBGH6xSsK1Vb6PD40W58ep3"></script>
@@ -25,6 +26,8 @@
     <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
     <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
+
+
 </head>
 <body>
 <div class="span9" style="height:100%">
@@ -169,14 +172,17 @@ function loadkaart(loadmap){
         satellite.classList.remove("active");
         normal.classList.add("active");
     }
+
     if (marker) {
         map.removeLayer(marker);
         console.log("REMOVE!");
     }
     
 }
+
 loadkaart(loadmap);
 map.locate({watch: true, setView: false, maxZoom: 18, enableHighAccuracy: true});
+
     
 function onLocationFound(e) {
     if(i == 0){
@@ -205,19 +211,23 @@ function onLocationFound(e) {
     map.addLayer(circle);
     map.addLayer(current_position);
 }
+
 //set vieuw on yourlocation
 function setview(e){
     var latview = e._latlng.lat;
     var lngview = e._latlng.lng;
     map.panTo(new L.LatLng(latview, lngview));
 }
+
 //onlocationfound
 map.on('locationfound', onLocationFound);
 function onLocationError(e) {
     alert(e.message);
 }
+
 //on errors
 map.on('locationerror', onLocationError);
+
 //onclick map
 //set marker
     map.on('click', function (position) {
@@ -228,9 +238,11 @@ map.on('locationerror', onLocationError);
       marker.dragging.disable()
       marker.dragging.enable();
     });
+
 //zoekbalk
  var searchControl = new L.esri.Controls.Geosearch().addTo(map);
   var results = new L.LayerGroup().addTo(map);
+
   searchControl.on('results', function(data){
     results.clearLayers();
     for (var i = data.results.length - 1; i >= 0; i--) {
@@ -239,20 +251,29 @@ map.on('locationerror', onLocationError);
   });
 //schaal
   L.control.scale().addTo(map);
+
 //route
 var dir;
+
 function route(){
     dir = MQ.routing.directions();
+
     dir.route({
         locations: [
             { latLng: { lat: 53.033718, lng: 5.661130 }},
             { latLng: { lat: 53.201233, lng: 5.799913}}
         ]
     });
+
     map.addLayer(MQ.routing.routeLayer({
         directions: dir,
         fitBounds: true
     }));
 }
+
 route();
+</script>
+
+
+
 </script>
