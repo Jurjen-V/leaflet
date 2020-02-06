@@ -151,8 +151,11 @@ function loadkaart(loadmap){
     }
     
 }
+
 loadkaart(loadmap);
 map.locate({watch: true, setView: false, maxZoom: 18, enableHighAccuracy: true});
+
+
 function onLocationFound(e) {
     if(i == 0){
         map.panTo(new L.LatLng(e.latitude, e.longitude));
@@ -192,6 +195,11 @@ function onLocationError(e) {
 map.on('locationerror', onLocationError);
 //set marker
     map.on('click', function (position) {
+        
+        document.getElementById('btn1').onclick = function () {
+            alert("button1 was clicked")
+        }​;
+
       if (marker) {
         map.removeLayer(marker);
       }
