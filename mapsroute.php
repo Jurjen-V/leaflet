@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Leaflet</title>
     <!-- cdn leaflet -->
@@ -11,23 +11,23 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
-    <link href="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyB5FoasQwCg9CU7lUHnAq31xo8XfDBxVhk">
+    <!-- osm -->
     <script src="https://cdn.osmbuildings.org/classic/0.2.2b/OSMBuildings-Leaflet.js"></script>  
     <script src="//cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-      <!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" /> -->
-<script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
-<script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
+    <!-- route -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=AabzipTGobBGH6xSsK1Vb6PD40W58ep3"></script>
+    <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=AabzipTGobBGH6xSsK1Vb6PD40W58ep3"></script>
+    
+    <!-- zoekfunctie -->
+    <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+    <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
 
-<!-- route -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script> -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.5/leaflet-routing-machine.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.5/leaflet-routing-machine.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/perliedman-leaflet-control-geocoder/1.5.5/Control.Geocoder.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/perliedman-leaflet-control-geocoder/1.5.5/Control.Geocoder.min.css">
+
 </head>
 <body>
 <div class="span9" style="height:100%">
@@ -94,6 +94,7 @@ var loadmap = 'normal';
 var current_position , circle, polyline, marker;
 var i = 0;
 var map = new L.map('map',{
+    layers: MQ.mapLayer(),
     zoom: 15,
     zoomControl: false,
 }).fitWorld();
@@ -182,7 +183,7 @@ function loadkaart(loadmap){
 loadkaart(loadmap);
 map.locate({watch: true, setView: false, maxZoom: 18, enableHighAccuracy: true});
 
-
+    
 function onLocationFound(e) {
     if(i == 0){
         map.panTo(new L.LatLng(e.latitude, e.longitude));
@@ -252,13 +253,26 @@ map.on('locationerror', onLocationError);
   L.control.scale().addTo(map);
 
 //route
-// var control = L.Routing.control({
-//   router: new L.Routing.osrmv1({
-//     language: 'en',
-//     profile: 'car'
-//   }),
-//   geocoder: L.Control.Geocoder.nominatim({})
-// }).addTo(map);
+var dir;
+
+function route(){
+    dir = MQ.routing.directions();
+
+    dir.route({
+        locations: [
+            { latLng: { lat: 53.033718, lng: 5.661130 }},
+            { latLng: { lat: 53.201233, lng: 5.799913}}
+        ]
+    });
+
+    map.addLayer(MQ.routing.routeLayer({
+        directions: dir,
+        fitBounds: true
+    }));
+}
+
+route();
+
 
 
 </script>
