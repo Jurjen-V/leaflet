@@ -32,9 +32,9 @@
 <div class="span9" style="height:100%">
     <div id="map">
         <div class="leaflet-bottom leaflet-right button_box" style="display:inline-block;">
-            <button type="button" id="Btn1" value="Osm" onclick="" class="btnStyle span3 leaflet-control Button"><i class="material-icons">3d_rotation</i></button>
-            <button type="button" id="Btn2" value="Satellite" onclick="" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">satellite</i></button> 
-            <button type="button" id="Btn3" value="Kaart" onclick="" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">map</i></button>
+            <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button"><i class="material-icons">3d_rotation</i></button>
+            <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">satellite</i></button> 
+            <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">map</i></button>
             <button type="button" id="Btn5" value="route" onclick="route(current_position,marker )" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">directions</i></button>
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
@@ -90,6 +90,7 @@
 <script type="text/javascript">
 var loadmap = 'normal';
 var current_position , circle, polyline, marker;
+var value, value2, clicked2, i , e;
 var i = 0;
 var clicked = false;
 var map = new L.map('map',{
@@ -175,7 +176,9 @@ function loadkaart(loadmap){
     if (marker) {
         map.removeLayer(marker);
         console.log("REMOVE!");
-    }    
+    }   
+
+    test() 
 }
 map.setZoom(16);
 loadkaart(loadmap);
@@ -227,7 +230,6 @@ function onLocationError(e) {
 map.on('locationerror', onLocationError);
 
 //onclick
-var value, value2, clicked2, i;
 $('html').on('click', function(){
     clicked = false;
     value = "niks!"; 
@@ -235,47 +237,37 @@ $('html').on('click', function(){
     $("Button").click(function(){
         clicked2 = true;
         value2 = $("Button").val();
-        if (marker) {
-            map.removeLayer(marker);
-        }
     });
+});
 
+
+map.on('click', function (e) {
+    // console.log(e);
+    e = e;
     if(!clicked2 == "" && !value2 == ""){
-        console.log(clicked2 + ' ' + value2);
+        test(clicked2, e);
         value2 = "";  
         clicked2 = "";
-        // test(clicked2);
     }else{
-        console.log('NIET' +clicked + ' ' + value);
-        // test(clicked);
+        test(clicked, e);
     }
 
 });
 
 
-
-// console.log(value);
-
-
 //setmarker
-function test(clicked){
-    if(!clicked){
-        map.on('click', function (e) {
-        console.log("WEL" + clicked);
+function test(clicked, e){
+    console.log(clicked);
+    if(clicked == false){
         if (marker) {
         map.removeLayer(marker);
         }
         marker = new L.Marker(e.latlng).addTo(map);
         marker.dragging.disable()
         marker.dragging.enable();
-        });
     }
-    if(clicked){
-        if (marker) {
-        console.log('remove marker');
-        map.removeLayer(marker);
-        }
-        
+    if(clicked == true){
+
         console.log("btn dus geen marker!");
     }
 }
