@@ -1,4 +1,5 @@
 document.getElementById("Btn6").style.display = "none";
+document.getElementById("route-narrative").style.display = "none";
 var current_position,
   circle,
   polyline,
@@ -237,9 +238,10 @@ function route(latlng, latlng2) {
       for (i = 0; i < maneuvers.length; i++) {
         html += i + 1 + ". ";
         html += maneuvers[i].narrative + "";
+        html += "<br>";
       }
-
-      // L.DomUtil.get('route-narrative').innerHTML = html;
+      document.getElementById("route-narrative").style.display = "inline-block";
+      L.DomUtil.get("route-narrative").innerHTML = html;
     }
   });
 
