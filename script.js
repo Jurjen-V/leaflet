@@ -148,6 +148,11 @@ function onLocationFound(e) {
   }).addTo(map);
   map.addLayer(circle);
   map.addLayer(current_position);
+
+  //update route wanneer die er is
+  if (marker || current_position) {
+    route2(current_position, marker);
+  }
 }
 
 //set vieuw on yourlocation
