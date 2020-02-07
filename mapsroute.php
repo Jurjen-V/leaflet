@@ -176,7 +176,7 @@ function loadkaart(loadmap){
     }
     
 }
-
+map.setZoom(16);
 loadkaart(loadmap);
 map.locate({watch: true, setView: false, maxZoom: 18, enableHighAccuracy: true});
 
