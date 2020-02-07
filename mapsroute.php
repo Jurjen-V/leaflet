@@ -173,10 +173,10 @@ function loadkaart(loadmap){
         normal.classList.add("active");
     }
 
-    if (marker) {
-        map.removeLayer(marker);
-        console.log("REMOVE!");
-    }   
+    // if (marker) {
+    //     map.removeLayer(marker);
+    //     console.log("REMOVE!");
+    // }   
 
     test() 
 }
