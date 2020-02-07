@@ -273,19 +273,19 @@ function route2(latlng, latlng2, e) {
 
   CustomRouteLayer = MQ.Routing.RouteLayer.extend({
     createStartMarker: function(location, stopNumber) {
-    if (marker) {
-      map.removeLayer(marker);
-    }
-      var marker;
-
+      if (current_position) {
+        map.removeLayer(current_position);
+        map.removeLayer(circle);
+      }
+      // var current;
       //HIER MOET LAT LONG VAN EIGEN POSITIE
-      marker = new L.circleMarker([latlng._latlng.lat, latlng._latlng.lng], {
+      current_position = new L.circleMarker([latlng._latlng.lat, latlng._latlng.lng], {
         color: "white",
         fillColor: "#4285f4",
         radius: 10,
         fillOpacity: 1
       }).addTo(map);
-      return marker;
+      return current_position;
     },
 
     createEndMarker: function(location, stopNumber) {
@@ -313,3 +313,8 @@ function route2(latlng, latlng2, e) {
     })
   );
 }
+var layers = [];
+map.eachLayer(function(layer) {
+  console.log(layer);
+});
+map.removeLayer(_polyline)
