@@ -1,3 +1,4 @@
+document.getElementById('Btn6').style.visibility = 'hidden';
 var current_position,
   circle,
   polyline,
@@ -222,7 +223,7 @@ function route2(latlng, latlng2) {
     console.log(LayerGroup10);
     LayerGroup10.clearLayers();
   }
-
+  document.getElementById('Btn6').style.visibility = 'visible';
   map.addLayer(marker);
 
   dir = MQ.routing.directions();
@@ -284,8 +285,9 @@ function route2(latlng, latlng2) {
 function stopRoute(){
   if (LayerGroup10) {
     console.log(LayerGroup10);
+    routecheck = false
     // map.removeLayer(LayerGroup10._layers[54]);
     LayerGroup10.clearLayers();
   }
-  document.getElementById('Btn5').style.visibility = 'hidden';
+  document.getElementById('Btn6').style.visibility = 'hidden';
 }
