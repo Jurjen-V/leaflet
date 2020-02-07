@@ -173,7 +173,6 @@ $("html").on("click", function() {
   });
 });
 map.on("click", function(e) {
-  // console.log(e);
   e = e;
   if (!clicked2 == "" && !value2 == "") {
     test(clicked2, e);
@@ -185,7 +184,6 @@ map.on("click", function(e) {
 });
 //setmarker
 function test(clicked, e) {
-  //   console.log(clicked);
   if (clicked == false) {
     if (marker) {
       map.removeLayer(marker);
@@ -217,10 +215,10 @@ L.control.scale().addTo(map);
 
 //route
 var LayerGroup10 = new L.layerGroup().addTo(map);
-function route2(latlng, latlng2) {
+function route(latlng, latlng2) {
   routcheck = false;
   if (LayerGroup10) {
-    console.log(LayerGroup10);
+    // console.log(LayerGroup10);
     LayerGroup10.clearLayers();
   }
   document.getElementById("Btn6").style.visibility = "visible";
@@ -286,7 +284,7 @@ function route2(latlng, latlng2) {
 //stop route
 function stopRoute() {
   if (LayerGroup10) {
-    console.log(LayerGroup10);
+    // console.log(LayerGroup10);
     routecheck = false;
     LayerGroup10.clearLayers();
   }
