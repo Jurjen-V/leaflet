@@ -246,6 +246,7 @@ map.on('locationerror', onLocationError);
     for (var i = data.results.length - 1; i >= 0; i--) {
       results.addLayer(marker = L.marker(data.results[i].latlng));
     }
+    route(current_position,marker );
   });
 //schaal
   L.control.scale().addTo(map);
