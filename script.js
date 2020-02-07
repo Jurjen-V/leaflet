@@ -233,6 +233,7 @@ function route(latlng, latlng2) {
     map.removeLayer(layer);
   });
 
+  map.addLayer(marker);
   loadkaart("normal");
 
   dir = MQ.routing.directions();
