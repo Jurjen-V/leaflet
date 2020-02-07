@@ -270,8 +270,12 @@ function route2(latlng, latlng2, e) {
       { latLng: { lat: latlng2._latlng.lat, lng: latlng2._latlng.lng } }
     ]
   });
+
   CustomRouteLayer = MQ.Routing.RouteLayer.extend({
     createStartMarker: function(location, stopNumber) {
+    if (marker) {
+      map.removeLayer(marker);
+    }
       var marker;
 
       //HIER MOET LAT LONG VAN EIGEN POSITIE
