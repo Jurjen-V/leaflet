@@ -225,7 +225,25 @@ function route(latlng, latlng2) {
   document.getElementById("Btn5").style.display = "none";
   map.addLayer(marker);
 
-  dir = MQ.routing.directions();
+  dir = MQ.routing.directions()
+    .on('success', function(data) {
+        var legs = data.route.legs,
+            html = '',
+            maneuvers,
+            i;
+
+        if (legs && legs.length) {
+            maneuvers = legs[0].maneuvers;
+
+            for (i=0; i < maneuvers.length; i++) {
+                html += (i+1) + '. ';
+                html += maneuvers[i].narrative + '';
+            }
+
+            L.DomUtil.get('route-narrative').innerHTML = html;
+        }
+    });
+
   dir.route({
     locations: [
       { latLng: { lat: latlng._latlng.lat, lng: latlng._latlng.lng } },
