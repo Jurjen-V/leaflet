@@ -146,9 +146,9 @@ function onLocationFound(e) {
   map.addLayer(current_position);
 
   //   document.write(routecheck);
-  if (routecheck) {
-    route2(current_position, marker);
-  }
+  // if (routecheck) {
+  //   route2(current_position, marker);
+  // }
 }
 //set vieuw on yourlocation
 function setview(e) {
