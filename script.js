@@ -12,7 +12,6 @@ var current_position,
 var loadmap = "normal";
 var i = 0;
 var clicked = false;
-
 var map = new L.map("map", {
   layers: MQ.mapLayer(),
   zoom: 15,
@@ -23,7 +22,6 @@ L.control
     position: "bottomright"
   })
   .addTo(map);
-
 //function loadmap
 function loadkaart(loadmap) {
   //osm
@@ -38,7 +36,6 @@ function loadkaart(loadmap) {
         zoom: 16
       }
     ).addTo(map);
-
     osmb = new OSMBuildings(map).load(
       "https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json"
     );
@@ -57,7 +54,6 @@ function loadkaart(loadmap) {
     if (osmb) {
       map.removeLayer(osmb);
     }
-
     new L.tileLayer(
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
       {
@@ -87,7 +83,6 @@ function loadkaart(loadmap) {
     if (osmb) {
       map.removeLayer(osmb);
     }
-
     new L.tileLayer(
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
       {
@@ -110,7 +105,6 @@ function loadkaart(loadmap) {
     satellite.classList.remove("active");
     normal.classList.add("active");
   }
-
   test();
 }
 map.setZoom(16);
@@ -121,7 +115,6 @@ map.locate({
   maxZoom: 18,
   enableHighAccuracy: true
 });
-
 function onLocationFound(e) {
   if (i == 0) {
     map.panTo(new L.LatLng(e.latitude, e.longitude));
@@ -149,34 +142,28 @@ function onLocationFound(e) {
   map.addLayer(circle);
   map.addLayer(current_position);
 }
-
 //set vieuw on yourlocation
 function setview(e) {
   var latview = e._latlng.lat;
   var lngview = e._latlng.lng;
   map.panTo(new L.LatLng(latview, lngview));
 }
-
 //onlocationfound
 map.on("locationfound", onLocationFound);
 function onLocationError(e) {
   alert(e.message);
 }
-
 //on errors
 map.on("locationerror", onLocationError);
-
 //onclick
 $("html").on("click", function() {
   clicked = false;
   value = "niks!";
-
   $("Button").click(function() {
     clicked2 = true;
     value2 = $("Button").val();
   });
 });
-
 map.on("click", function(e) {
   // console.log(e);
   e = e;
@@ -188,7 +175,6 @@ map.on("click", function(e) {
     test(clicked, e);
   }
 });
-
 //setmarker
 function test(clicked, e) {
   //   console.log(clicked);
@@ -204,38 +190,30 @@ function test(clicked, e) {
     // console.log("btn dus geen marker!");
   }
 }
-
 //zoekbalk
 var searchControl = new L.esri.Controls.Geosearch().addTo(map);
 var results = new L.LayerGroup().addTo(map);
-
 searchControl.on("results", function(data) {
   if (marker) {
     map.removeLayer(marker);
   }
-
   loadkaart("normal");
-
   results.clearLayers();
   for (var i = data.results.length - 1; i >= 0; i--) {
     results.addLayer((marker = new L.marker(data.results[i].latlng)));
   }
-
   route(current_position, marker);
 });
 //schaal
 L.control.scale().addTo(map);
-
 //route
 function route(latlng, latlng2) {
   //remove all old layers
   map.eachLayer(function(layer) {
     map.removeLayer(layer);
   });
-
   map.addLayer(marker);
   loadkaart("normal");
-
   dir = MQ.routing.directions();
   dir.route({
     locations: [
@@ -243,7 +221,6 @@ function route(latlng, latlng2) {
       { latLng: { lat: latlng2._latlng.lat, lng: latlng2._latlng.lng } }
     ]
   });
-
   map.addLayer(
     MQ.routing.routeLayer({
       directions: dir,
@@ -251,18 +228,21 @@ function route(latlng, latlng2) {
     })
   );
 }
-
-function route2(latlng, latlng2, e) {
+var routelayertest;
+function route2(latlng, latlng2) {
   //remove all old layers
-  //   console.log(e);
-
-  map.eachLayer(function(layer) {
-    map.removeLayer(layer);
-  });
+  if (routelayertest) {
+    console.log(routelayertest);
+    console.log(routelayertest._layers);
+    map.removeLayer(51);
+  }
+  console.log(e);
+  //   map.eachLayer(function(layer) {
+  //     map.removeLayer(layer);
+  //   });
 
   map.addLayer(marker);
   loadkaart("normal");
-
   dir = MQ.routing.directions();
   dir.route({
     locations: [
@@ -270,28 +250,27 @@ function route2(latlng, latlng2, e) {
       { latLng: { lat: latlng2._latlng.lat, lng: latlng2._latlng.lng } }
     ]
   });
-
   CustomRouteLayer = MQ.Routing.RouteLayer.extend({
     createStartMarker: function(location, stopNumber) {
-      if (current_position) {
-        map.removeLayer(current_position);
-        map.removeLayer(circle);
+      if (marker) {
+        map.removeLayer(marker);
       }
-      // var current;
+      var current;
       //HIER MOET LAT LONG VAN EIGEN POSITIE
-      current_position = new L.circleMarker([latlng._latlng.lat, latlng._latlng.lng], {
-        color: "white",
-        fillColor: "#4285f4",
-        radius: 10,
-        fillOpacity: 1
-      }).addTo(map);
+      current_position = new L.circleMarker(
+        [latlng._latlng.lat, latlng._latlng.lng],
+        {
+          color: "white",
+          fillColor: "#4285f4",
+          radius: 10,
+          fillOpacity: 1
+        }
+      ).addTo(map);
       return current_position;
     },
-
     createEndMarker: function(location, stopNumber) {
       var custom_icon;
       var marker;
-
       custom_icon = L.icon({
         iconUrl:
           "https://www.mapquestapi.com/staticmap/geticon?uri=poi-red_1.png",
@@ -299,14 +278,11 @@ function route2(latlng, latlng2, e) {
         iconAnchor: [10, 29],
         popupAnchor: [0, -29]
       });
-
       marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
-
       return marker;
     }
   });
-
-  map.addLayer(
+  routelayertest = map.addLayer(
     new CustomRouteLayer({
       directions: dir,
       fitBounds: true
