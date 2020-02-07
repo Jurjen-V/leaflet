@@ -1,4 +1,4 @@
-document.getElementById("Btn6").style.visibility = "hidden";
+document.getElementById("Btn6").style.display = "none";
 var current_position,
   circle,
   polyline,
@@ -223,7 +223,8 @@ function route2(latlng, latlng2) {
     console.log(LayerGroup10);
     LayerGroup10.clearLayers();
   }
-  document.getElementById("Btn6").style.visibility = "visible";
+  document.getElementById("Btn6").style.display = "inline-block";
+  document.getElementById("Btn5").style.display = "none";
   map.addLayer(marker);
 
   dir = MQ.routing.directions();
@@ -290,5 +291,6 @@ function stopRoute() {
     routecheck = false;
     LayerGroup10.clearLayers();
   }
-  document.getElementById("Btn6").style.visibility = "hidden";
+  document.getElementById("Btn6").style.display = "none";
+  document.getElementById("Btn5").style.display = "inline-block";
 }
