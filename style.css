@@ -8,6 +8,13 @@
   right: 0px;
   bottom: 80px;
 }
+.Route{
+  max-height: 100px;
+  overflow: auto;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid black;
+}
 .Button {
   background-color: white;
   border: none;
