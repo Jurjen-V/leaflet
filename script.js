@@ -105,7 +105,9 @@ function loadkaart(loadmap) {
     satellite.classList.remove("active");
     normal.classList.add("active");
   }
-  test();
+  if (current_position && marker) {
+    route2(current_position, marker);
+  }
 }
 map.setZoom(16);
 loadkaart(loadmap);
@@ -206,6 +208,7 @@ searchControl.on("results", function(data) {
 });
 //schaal
 L.control.scale().addTo(map);
+
 //route
 function route(latlng, latlng2) {
   //remove all old layers
@@ -228,20 +231,18 @@ function route(latlng, latlng2) {
     })
   );
 }
-var routelayertest;
+var routelayertest, LayerGroup10;
+var LayerGroup10 = new L.layerGroup().addTo(map);
+
 function route2(latlng, latlng2) {
-  //remove all old layers
-  if (routelayertest) {
-    console.log(routelayertest._layers);
-    console.log(routelayertest._layers[51]);
-    map.removeLayer(routelayertest._layers[51]);
+  if (LayerGroup10) {
+    console.log(LayerGroup10);
+    // map.removeLayer(LayerGroup10._layers[54]);
+    LayerGroup10.clearLayers();
   }
-  //   map.eachLayer(function(layer) {
-  //     map.removeLayer(layer);
-  //   });
 
   map.addLayer(marker);
-  loadkaart("normal");
+
   dir = MQ.routing.directions();
   dir.route({
     locations: [
@@ -277,14 +278,21 @@ function route2(latlng, latlng2) {
         iconAnchor: [10, 29],
         popupAnchor: [0, -29]
       });
-      marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
+      marker = new L.marker(location.latLng, { icon: custom_icon }).addTo(map);
       return marker;
     }
   });
-  routelayertest = map.addLayer(
-    new CustomRouteLayer({
-      directions: dir,
-      fitBounds: true
-    })
-  );
+  //   routelayertest = map.addLayer(
+  //     new CustomRouteLayer({
+  //       directions: dir,
+  //       fitBounds: true
+  //     })
+  //   );
+
+  routelayertest = new CustomRouteLayer({
+    directions: dir,
+    fitBounds: true
+  }).addTo(LayerGroup10);
+
+  //   map.addLayer(LayerGroup10);
 }
