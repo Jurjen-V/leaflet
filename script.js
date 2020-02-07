@@ -9,6 +9,8 @@ var current_position,
   i,
   e,
   osmb;
+var routecheck = false;
+var routelayertest, LayerGroup10;
 var loadmap = "normal";
 var i = 0;
 var clicked = false;
@@ -108,6 +110,7 @@ function loadkaart(loadmap) {
 }
 map.setZoom(16);
 loadkaart(loadmap);
+
 map.locate({
   watch: true,
   setView: false,
@@ -141,10 +144,9 @@ function onLocationFound(e) {
   map.addLayer(circle);
   map.addLayer(current_position);
 
-  if (current_position) {
-    if (marker) {
-      route2(current_position, marker);
-    }
+  //   document.write(routecheck);
+  if (routecheck) {
+    route2(current_position, marker);
   }
 }
 //set vieuw on yourlocation
@@ -213,34 +215,11 @@ searchControl.on("results", function(data) {
 L.control.scale().addTo(map);
 
 //route
-function route(latlng, latlng2) {
-  //remove all old layers
-  map.eachLayer(function(layer) {
-    map.removeLayer(layer);
-  });
-  map.addLayer(marker);
-  loadkaart("normal");
-  dir = MQ.routing.directions();
-  dir.route({
-    locations: [
-      { latLng: { lat: latlng._latlng.lat, lng: latlng._latlng.lng } },
-      { latLng: { lat: latlng2._latlng.lat, lng: latlng2._latlng.lng } }
-    ]
-  });
-  map.addLayer(
-    MQ.routing.routeLayer({
-      directions: dir,
-      fitBounds: true
-    })
-  );
-}
-var routelayertest, LayerGroup10;
 var LayerGroup10 = new L.layerGroup().addTo(map);
-
 function route2(latlng, latlng2) {
+  routcheck = false;
   if (LayerGroup10) {
     console.log(LayerGroup10);
-    // map.removeLayer(LayerGroup10._layers[54]);
     LayerGroup10.clearLayers();
   }
 
@@ -294,17 +273,11 @@ function route2(latlng, latlng2) {
       return marker;
     }
   });
-  //   routelayertest = map.addLayer(
-  //     new CustomRouteLayer({
-  //       directions: dir,
-  //       fitBounds: true
-  //     })
-  //   );
 
   routelayertest = new CustomRouteLayer({
     directions: dir,
     fitBounds: true
   }).addTo(LayerGroup10);
 
-  //   map.addLayer(LayerGroup10);
+  routecheck = true;
 }
