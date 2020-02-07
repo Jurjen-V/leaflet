@@ -215,10 +215,11 @@ L.control.scale().addTo(map);
 //route
 function route(latlng, latlng2) {
   //remove all old layers
+  map.addLayer(marker);
   map.eachLayer(function(layer) {
+    setTimeout(1000);
     map.removeLayer(layer);
   });
-  map.addLayer(marker);
   loadkaart("normal");
   dir = MQ.routing.directions();
   dir.route({
@@ -307,4 +308,12 @@ function route2(latlng, latlng2) {
   }).addTo(LayerGroup10);
 
   //   map.addLayer(LayerGroup10);
+}
+function stopRoute(){
+  if (LayerGroup10) {
+    console.log(LayerGroup10);
+    // map.removeLayer(LayerGroup10._layers[54]);
+    LayerGroup10.clearLayers();
+  }
+  document.getElementById('Btn5').style.visibility = 'hidden';
 }

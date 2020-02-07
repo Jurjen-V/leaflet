@@ -40,6 +40,7 @@
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
+            <button type="button" id="Btn5" value="" onclick="stopRoute()" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>stop</i></button>
         </div>
     </div>
 </div>
