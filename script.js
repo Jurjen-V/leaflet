@@ -1,8 +1,18 @@
+var current_position,
+  circle,
+  polyline,
+  marker,
+  dir,
+  value,
+  value2,
+  clicked2,
+  i,
+  e,
+  osmb;
 var loadmap = "normal";
-var current_position, circle, polyline, marker;
-var value, value2, clicked2, i, e;
 var i = 0;
 var clicked = false;
+
 var map = new L.map("map", {
   layers: MQ.mapLayer(),
   zoom: 15,
@@ -13,7 +23,8 @@ L.control
     position: "bottomright"
   })
   .addTo(map);
-var osmb;
+
+//function loadmap
 function loadkaart(loadmap) {
   //osm
   if (loadmap == "osm") {
@@ -180,7 +191,7 @@ map.on("click", function(e) {
 
 //setmarker
 function test(clicked, e) {
-  console.log(clicked);
+  //   console.log(clicked);
   if (clicked == false) {
     if (marker) {
       map.removeLayer(marker);
@@ -190,7 +201,7 @@ function test(clicked, e) {
     marker.dragging.enable();
   }
   if (clicked == true) {
-    console.log("btn dus geen marker!");
+    // console.log("btn dus geen marker!");
   }
 }
 
@@ -216,8 +227,12 @@ searchControl.on("results", function(data) {
 L.control.scale().addTo(map);
 
 //route
-var dir;
 function route(latlng, latlng2) {
+  //remove all old layers
+  map.eachLayer(function(layer) {
+    map.removeLayer(layer);
+  });
+
   loadkaart("normal");
 
   dir = MQ.routing.directions();
