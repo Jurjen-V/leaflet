@@ -105,9 +105,6 @@ function loadkaart(loadmap) {
     satellite.classList.remove("active");
     normal.classList.add("active");
   }
-  if (current_position && marker) {
-    route2(current_position, marker);
-  }
 }
 map.setZoom(16);
 loadkaart(loadmap);
@@ -143,6 +140,12 @@ function onLocationFound(e) {
   }).addTo(map);
   map.addLayer(circle);
   map.addLayer(current_position);
+
+  if (current_position) {
+    if (marker) {
+      route2(current_position, marker);
+    }
+  }
 }
 //set vieuw on yourlocation
 function setview(e) {
@@ -252,11 +255,11 @@ function route2(latlng, latlng2) {
   });
   CustomRouteLayer = MQ.Routing.RouteLayer.extend({
     createStartMarker: function(location, stopNumber) {
-      if (marker) {
-        map.removeLayer(marker);
+      if (current_position) {
+        map.removeLayer(current_position);
+        map.removeLayer(circle);
       }
-      var current;
-      //HIER MOET LAT LONG VAN EIGEN POSITIE
+      //set location
       current_position = new L.circleMarker(
         [latlng._latlng.lat, latlng._latlng.lng],
         {
@@ -266,6 +269,15 @@ function route2(latlng, latlng2) {
           fillOpacity: 1
         }
       ).addTo(map);
+      circle = new L.circleMarker([latlng._latlng.lat, latlng._latlng.lng], {
+        color: "#d3e2f9",
+        fillColor: "#d3e2f9",
+        fillOpacity: 0.5,
+        radius: 12
+      }).addTo(map);
+      map.addLayer(circle);
+      map.addLayer(current_position);
+
       return current_position;
     },
     createEndMarker: function(location, stopNumber) {
