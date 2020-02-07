@@ -26,8 +26,6 @@
     <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
     <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css">
-
-
 </head>
 <body>
 <div class="span9" style="height:100%">
@@ -66,6 +64,7 @@
     font-size: 16px;
     clear: both ;
     display:inline-block ;
+    background-repeat: no-repeat;
     float: none !important;
   }
   .Button:hover, .Button1:hover{
@@ -238,15 +237,24 @@ map.on('locationerror', onLocationError);
     });
 
 //zoekbalk
- var searchControl = new L.esri.Controls.Geosearch().addTo(map);
+  var searchControl = new L.esri.Controls.Geosearch().addTo(map);
   var results = new L.LayerGroup().addTo(map);
 
   searchControl.on('results', function(data){
+    
+    if (marker) {
+        map.removeLayer(marker);
+    }
+
+    loadkaart('normal');
+
     results.clearLayers();
     for (var i = data.results.length - 1; i >= 0; i--) {
-      results.addLayer(marker = L.marker(data.results[i].latlng));
+      results.addLayer(marker = new L.marker(data.results[i].latlng));
     }
-    route(current_position,marker );
+
+    route(current_position,marker);
+
   });
 //schaal
   L.control.scale().addTo(map);
