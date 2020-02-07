@@ -16,12 +16,10 @@
     <script src="//cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
     <!-- icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <!-- route -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=AabzipTGobBGH6xSsK1Vb6PD40W58ep3"></script>
     <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=AabzipTGobBGH6xSsK1Vb6PD40W58ep3"></script>
-    
     <!-- zoekfunctie -->
     <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
     <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
@@ -38,6 +36,7 @@
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
+            <button type="button" id="Btn4" value="" onclick="zoom()" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>zoom_in</i></button>
         </div>
     </div>
 </div>
@@ -261,8 +260,6 @@ map.on('locationerror', onLocationError);
 
 //route
 var dir;
-var rlayer = null;
-
 function route(latlng, latlng2){
 
     loadkaart('normal');
