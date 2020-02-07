@@ -27,7 +27,8 @@ function loadkaart(loadmap) {
         zoom: 16
       }
     ).addTo(map);
-    var osmb = new OSMBuildings(map).load(
+
+    osmb = new OSMBuildings(map).load(
       "https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json"
     );
     var osm = document.getElementById("Btn1");
@@ -42,10 +43,10 @@ function loadkaart(loadmap) {
   }
   //satellite
   if (loadmap == "satellite") {
-    //remove old layers
-    map.eachLayer(function(layer) {
-      map.removeLayer(layer);
-    });
+    if (osmb) {
+      map.removeLayer(osmb);
+    }
+
     new L.tileLayer(
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
       {
@@ -72,10 +73,9 @@ function loadkaart(loadmap) {
   //normal
   if (loadmap == "normal") {
     //remove old layers
-    map.eachLayer(function(layer) {
-      map.removeLayer(layer);
-    });
-    // map.removeLayer(osmb);
+    if (osmb) {
+      map.removeLayer(osmb);
+    }
 
     new L.tileLayer(
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
