@@ -10,6 +10,7 @@
 }
 .Route{
   max-height: 100px;
+  max-width: 80%; 
   overflow: auto;
   background-color: white;
   padding: 10px;
