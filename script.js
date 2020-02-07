@@ -1,4 +1,4 @@
-document.getElementById('Btn6').style.visibility = 'hidden';
+document.getElementById("Btn6").style.visibility = "hidden";
 var current_position,
   circle,
   polyline,
@@ -118,6 +118,7 @@ map.locate({
   maxZoom: 18,
   enableHighAccuracy: true
 });
+
 function onLocationFound(e) {
   if (i == 0) {
     map.panTo(new L.LatLng(e.latitude, e.longitude));
@@ -145,10 +146,9 @@ function onLocationFound(e) {
   map.addLayer(circle);
   map.addLayer(current_position);
 
-  //   document.write(routecheck);
-  // if (routecheck) {
-  //   route2(current_position, marker);
-  // }
+  //   if (routecheck) {
+  //     route2(current_position, marker);
+  //   }
 }
 //set vieuw on yourlocation
 function setview(e) {
@@ -223,7 +223,7 @@ function route2(latlng, latlng2) {
     console.log(LayerGroup10);
     LayerGroup10.clearLayers();
   }
-  document.getElementById('Btn6').style.visibility = 'visible';
+  document.getElementById("Btn6").style.visibility = "visible";
   map.addLayer(marker);
 
   dir = MQ.routing.directions();
@@ -279,15 +279,16 @@ function route2(latlng, latlng2) {
     directions: dir,
     fitBounds: true
   }).addTo(LayerGroup10);
-
+  //update check
   routecheck = true;
 }
-function stopRoute(){
+
+//stop route
+function stopRoute() {
   if (LayerGroup10) {
     console.log(LayerGroup10);
-    routecheck = false
-    // map.removeLayer(LayerGroup10._layers[54]);
+    routecheck = false;
     LayerGroup10.clearLayers();
   }
-  document.getElementById('Btn6').style.visibility = 'hidden';
+  document.getElementById("Btn6").style.visibility = "hidden";
 }
