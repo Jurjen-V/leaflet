@@ -8,12 +8,13 @@
   right: 0px;
   bottom: 80px;
 }
-.Route{
+.Route {
   max-height: 100px;
   overflow: auto;
   background-color: white;
   padding: 10px;
   border: 1px solid black;
+  width: 80%;
 }
 .Button {
   background-color: white;
@@ -49,6 +50,8 @@ body,
   height: 100%;
   width: 100vw;
 }
-.mq-attribution-control, .mq-logo-control, .leaflet-control-attribution{
+.mq-attribution-control,
+.mq-logo-control,
+.leaflet-control-attribution {
   display: none !important;
 }

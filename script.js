@@ -172,7 +172,12 @@ $("html").on("click", function() {
     clicked2 = true;
     value2 = $("Button").val();
   });
+
+  $("Route").click(function() {
+    console.log("Clicked!");
+  });
 });
+
 map.on("click", function(e) {
   e = e;
   if (!clicked2 == "" && !value2 == "") {
