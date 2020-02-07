@@ -1,0 +1,44 @@
+.button_box {
+  position: absolute;
+  right: 50px;
+  bottom: 20px;
+}
+.button_box2 {
+  position: absolute;
+  right: 0px;
+  bottom: 90px;
+}
+.Button {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  clear: both;
+  display: inline-block;
+  background-repeat: no-repeat;
+  float: none !important;
+}
+.Button:hover,
+.Button1:hover {
+  cursor: pointer;
+  background-color: #4285f4;
+  border: none;
+  color: white;
+}
+.active {
+  background-color: #4285f4;
+  color: white;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+html,
+body,
+#map {
+  height: 100%;
+  width: 100vw;
+}
