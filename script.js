@@ -251,3 +251,61 @@ function route(latlng, latlng2) {
     })
   );
 }
+
+function route2(latlng, latlng2, e) {
+  //remove all old layers
+  //   console.log(e);
+
+  map.eachLayer(function(layer) {
+    map.removeLayer(layer);
+  });
+
+  map.addLayer(marker);
+  loadkaart("normal");
+
+  dir = MQ.routing.directions();
+  dir.route({
+    locations: [
+      { latLng: { lat: latlng._latlng.lat, lng: latlng._latlng.lng } },
+      { latLng: { lat: latlng2._latlng.lat, lng: latlng2._latlng.lng } }
+    ]
+  });
+  CustomRouteLayer = MQ.Routing.RouteLayer.extend({
+    createStartMarker: function(location, stopNumber) {
+      var marker;
+
+      //HIER MOET LAT LONG VAN EIGEN POSITIE
+      marker = new L.circleMarker([latlng._latlng.lat, latlng._latlng.lng], {
+        color: "white",
+        fillColor: "#4285f4",
+        radius: 10,
+        fillOpacity: 1
+      }).addTo(map);
+      return marker;
+    },
+
+    createEndMarker: function(location, stopNumber) {
+      var custom_icon;
+      var marker;
+
+      custom_icon = L.icon({
+        iconUrl:
+          "https://www.mapquestapi.com/staticmap/geticon?uri=poi-red_1.png",
+        iconSize: [20, 29],
+        iconAnchor: [10, 29],
+        popupAnchor: [0, -29]
+      });
+
+      marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
+
+      return marker;
+    }
+  });
+
+  map.addLayer(
+    new CustomRouteLayer({
+      directions: dir,
+      fitBounds: true
+    })
+  );
+}

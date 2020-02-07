@@ -36,7 +36,7 @@
             <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button"><i class="material-icons">3d_rotation</i></button>
             <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">satellite</i></button> 
             <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">map</i></button>
-            <button type="button" id="Btn5" value="route" onclick="route(current_position,marker )" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">directions</i></button>
+            <button type="button" id="Btn5" value="route" onclick="route2(current_position,marker)" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">directions</i></button>
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
