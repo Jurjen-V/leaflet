@@ -259,7 +259,6 @@ $('html').on('click', function(){
 
 //setmarker
 function test(clicked){
-    if(i == 1)
     if(!clicked){
         map.on('click', function (e) {
         console.log("WEL" + clicked);
@@ -279,8 +278,6 @@ function test(clicked){
         
         console.log("btn dus geen marker!");
     }
-    
-    clicked = false;
 }
 
 //zoekbalk
