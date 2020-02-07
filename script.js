@@ -233,8 +233,8 @@ function route2(latlng, latlng2) {
   //remove all old layers
   if (routelayertest) {
     console.log(routelayertest);
-    console.log(routelayertest._layers);
-    map.removeLayer(51);
+    console.log(routelayertest._layers[51]);
+    map.removeLayer(routelayertest._layers[51][53]);
   }
   console.log(e);
   //   map.eachLayer(function(layer) {
@@ -289,8 +289,3 @@ function route2(latlng, latlng2) {
     })
   );
 }
-var layers = [];
-map.eachLayer(function(layer) {
-  console.log(layer);
-});
-map.removeLayer(_polyline)
