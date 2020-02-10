@@ -363,3 +363,7 @@ $("#map").mousedown(function() {
 $("#map").mouseup(function() {
   $(this).css("cursor", "auto");
 });
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, {});
+});

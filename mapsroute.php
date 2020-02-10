@@ -37,12 +37,6 @@
 <div class="button_box_route leaflet-right leaflet-top">
     <button type="button" id="Btn12" value="Show" onclick="showRoute()" class="btnStyle span3 leaflet-control Button"><i class="material-icons">arrow_drop_down</i></button>
 </div>
-<div id="route-narrative" class="Route">
-    <div class="button_box_route">
-        <button type="button" id="Btn11" value="Hide" onclick="hideRoute()" class="btnStyle span3 leaflet-control Button"><i class="material-icons">close</i></button>
-    </div>
-    <div id="text_box"></div>
-</div>
 
 <div class="span9" style="height:100%">
     <div id="map">
@@ -57,28 +51,31 @@
             <button type="button" id="Btn10" value="" class="btnStyle span3 leaflet-control Button"><i class='material-icons'>drive_eta</i></button>
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
         </div>
+        <button class="btnStyle leaflet-control">
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </button>
     </div>
 </div>
+
 
 <ul id="slide-out" class="sidenav">
     <li>
         <div class="user-view">
-            <p>HOI</p>
+            <div class="background">
+                <img src="img/office.jpg">
+            </div>
+            <p href="#name"><span class="white-text name">Route beschrijving</span></p>
         </div>
     </li>
+    <li><div class="divider"></div></li>
+    <li>
+        <div id="route-narrative" class="Route">
+            <div id="text_box"></div>
+        </div>
+    </li>
+    <li><div class="divider"></div></li>
 </ul>
-
-<div class="leaflet-top leaflet-left">
-    <br><br><br>
-    <button class="btnStyle leaflet-control">
-        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </button>
-  </div>
-
-
 </body>
 <!-- own js -->
-<script src="script.js">
-</script>
+<script src="script.js"></script>
 </html>
-
