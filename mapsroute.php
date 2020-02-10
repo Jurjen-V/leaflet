@@ -70,9 +70,7 @@
 
 <div class="leaflet-top leaflet-left">
     <br><br><br>
-    <button class="btnStyle leaflet-control">
-        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </button>
+    <a href="#" data-target="slide-out" class="leaflet-control sidenav-trigger" style="cursor: pointer;"><i class="material-icons">menu</i></a>
 </div>
 
 </body>
