@@ -28,6 +28,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- own css -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- favicon icon -->
+    <!-- <link rel="shortcut icon" type="image/png" href="http://example.com/favicon.png"/> -->
 </head>
 <body>
     <div id="route-narrative" class="Route"></div>

@@ -146,10 +146,6 @@ function onLocationFound(e) {
   }).addTo(map);
   map.addLayer(circle);
   map.addLayer(current_position);
-
-  //   if (routecheck) {
-  //     route2(current_position, marker);
-  //   }
 }
 //set vieuw on yourlocation
 function setview(e) {
@@ -188,6 +184,7 @@ map.on("click", function(e) {
     test(clicked, e);
   }
 });
+
 //setmarker
 function test(clicked, e) {
   if (clicked == false) {
@@ -316,3 +313,6 @@ function stopRoute() {
   document.getElementById("Btn6").style.display = "none";
   document.getElementById("Btn5").style.display = "inline-block";
 }
+
+L.DomEvent.disableClickPropagation(L.DomUtil.get("map"));
+L.DomEvent.disableScrollPropagation(L.DomUtil.get("map"));
