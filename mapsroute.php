@@ -41,6 +41,7 @@
     <button type="button" id="Btn6" value="" onclick="stopRoute()" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>stop</i></button>
 </div>
 <div class="leaflet-bottom leaflet-right button_box2">
+    <button type="button" id="Btn7" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>directions_car</i></button>
     <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
 </div>
 <div class="span9" style="height:100%">

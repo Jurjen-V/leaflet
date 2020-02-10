@@ -34,6 +34,9 @@
   background-repeat: no-repeat;
   float: none !important;
 }
+#Btn4, #Btn7{
+  float: right !important;
+}
 .Button:hover,
 .Button1:hover {
   cursor: pointer;
