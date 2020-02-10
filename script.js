@@ -313,6 +313,3 @@ function stopRoute() {
   document.getElementById("Btn6").style.display = "none";
   document.getElementById("Btn5").style.display = "inline-block";
 }
-
-L.DomEvent.disableClickPropagation(L.DomUtil.get("map"));
-L.DomEvent.disableScrollPropagation(L.DomUtil.get("map"));
