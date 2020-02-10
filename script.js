@@ -343,3 +343,11 @@ $("#Btn10").click(function() {
   }
   document.getElementById("Btn10").classList.toggle("active");
 });
+
+//cursor on move
+$("#map").mousedown(function() {
+  $(this).css("cursor", "all-scroll");
+});
+$("#map").mouseup(function() {
+  $(this).css("cursor", "auto");
+});
