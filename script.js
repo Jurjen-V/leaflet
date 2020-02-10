@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", function() {
+  var elems = document.querySelectorAll(".sidenav");
+  var instances = M.Sidenav.init(elems, {
+    onCloseEnd: sidenavclose,
+    onOpenStart: sidenavopen
+  });
+});
+
 document.getElementById("Btn6").style.display = "none";
 document.getElementById("route-narrative").style.display = "none";
 document.getElementById("Btn10").style.display = "none";
@@ -366,6 +374,12 @@ $("#map").mouseup(function() {
   $(this).css("cursor", "auto");
 });
 
+function closeSideNav() {
+  var elems = document.querySelectorAll(".sidenav");
+  var instance = M.Sidenav.getInstance(elems, {});
+  instance.close();
+}
+
 function sidenavopen() {
   document.getElementById("sidenav").style.display = "none";
 }
@@ -373,11 +387,3 @@ function sidenavopen() {
 function sidenavclose() {
   document.getElementById("sidenav").style.display = "block";
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  var elems = document.querySelectorAll(".sidenav");
-  var instances = M.Sidenav.init(elems, {
-    onCloseEnd: sidenavclose,
-    onOpenStart: sidenavopen
-  });
-});

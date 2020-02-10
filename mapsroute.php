@@ -67,7 +67,7 @@
     <li><div class="divider"></div></li>
     <li>
         <div class="button_box" style="display:inline-block;">
-            <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button"><i class="material-icons">3d_rotation</i></button>
+            <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm');" class="btnStyle span3 leaflet-control Button"><i class="material-icons">3d_rotation</i></button>
             <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">satellite</i></button> 
             <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">map</i></button>
         </div>
