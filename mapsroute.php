@@ -30,9 +30,9 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <div id="route-narrative" class="Route"></div>
 <div class="span9" style="height:100%">
     <div id="map">
-    <div id="route-narrative" class="Route leaflet-top leaflet-right"></div>
 
         <div class="leaflet-bottom leaflet-right button_box" style="display:inline-block;">
             <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button"><i class="material-icons">3d_rotation</i></button>
