@@ -45,16 +45,17 @@
   border: none;
   color: white;
 }
-#Btn11, #Btn12{
+#Btn11,
+#Btn12 {
   right: 0;
-  top:0;
+  top: 0;
   padding: 0;
 }
-.button_box_route{
+.button_box_route {
   right: 0;
   position: absolute;
 }
-#text_box{
+#text_box {
   margin-top: 25px;
 }
 .active {
@@ -76,4 +77,9 @@ body,
 .mq-logo-control,
 .leaflet-control-attribution {
   display: none !important;
+}
+
+#map {
+  z-index: 0;
+  position: absolute !important;
 }

@@ -246,7 +246,7 @@ function route(latlng, latlng2) {
         html += maneuvers[i].narrative + "";
         html += "<br>";
       }
-        document.getElementById("Btn12").style.display = "none";
+      document.getElementById("Btn12").style.display = "none";
       document.getElementById("route-narrative").style.display = "inline-block";
       L.DomUtil.get("text_box").innerHTML = html;
     }
@@ -346,16 +346,13 @@ $("#Btn10").click(function() {
   }
   document.getElementById("Btn10").classList.toggle("active");
 });
-function hideRoute(){
+function hideRoute() {
   document.getElementById("route-narrative").style.display = "none";
   document.getElementById("Btn12").style.display = "block";
-
 }
-function showRoute(){
+function showRoute() {
   document.getElementById("route-narrative").style.display = "block";
   document.getElementById("Btn12").style.display = "none";
-  
-}
 }
 
 //cursor on move
