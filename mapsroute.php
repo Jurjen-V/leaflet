@@ -70,7 +70,7 @@
 
 <div class="leaflet-top leaflet-left">
     <br><br><br>
-    <a href="#" data-target="slide-out" class="leaflet-control sidenav-trigger" style="cursor: pointer;"><i class="material-icons">menu</i></a>
+    <a href="#" id ="sidenav" data-target="slide-out" class="leaflet-control sidenav-trigger" style="cursor: pointer;"><i class="material-icons">menu</i></a>
 </div>
 
 </body>
