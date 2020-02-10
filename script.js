@@ -12,6 +12,7 @@ var current_position,
   i,
   e,
   osmb;
+var checkrijden = false;
 var routelayertest, LayerGroup10;
 var loadmap = "normal";
 var i = 0;
