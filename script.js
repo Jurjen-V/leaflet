@@ -2,6 +2,7 @@ document.getElementById("Btn6").style.display = "none";
 document.getElementById("route-narrative").style.display = "none";
 document.getElementById("Btn10").style.display = "none";
 document.getElementById("Btn12").style.display = "none";
+document.getElementsByClassName("geocoder-control-input").placeholder = "Zoek een plaats.."; 
 var current_position,
   circle,
   polyline,
@@ -355,7 +356,6 @@ function showRoute(){
   document.getElementById("route-narrative").style.display = "block";
   document.getElementById("Btn12").style.display = "none";
   
-}
 }
 
 //cursor on move
