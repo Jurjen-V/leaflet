@@ -9,16 +9,12 @@
   bottom: 80px;
 }
 .Route {
-  max-height: 20%;
-  max-width: 80%;
+  max-height: 80%;
   overflow: auto;
   background-color: white;
   padding: 10px;
-  box-shadow: 10px 10px rgba(0, 0, 0, 0.25);
   pointer-events: auto;
   position: absolute;
-  right: 0;
-  top: 0;
   z-index: 2;
 }
 .Button {
@@ -45,19 +41,6 @@
   border: none;
   color: white;
 }
-#Btn11,
-#Btn12 {
-  right: 0;
-  top: 0;
-  padding: 0;
-}
-.button_box_route {
-  right: 0;
-  position: absolute;
-}
-#text_box {
-  margin-top: 25px;
-}
 .active {
   background-color: #4285f4;
   color: white;
@@ -77,4 +60,22 @@ body,
 .mq-logo-control,
 .leaflet-control-attribution {
   display: none !important;
+}
+
+/*zoek balk*/
+.geocoder-control-input{
+  float: right;
+  box-shadow: 10px 10px rgba(0,0,0,.25);
+  padding: 6px 10px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+.gecoder-control-input:hover {
+  background: #ccc;
+}
+#map {
+  z-index: 0;
+  position: absolute !important;
+}
 }
