@@ -11,6 +11,7 @@ var current_position,
   i,
   e,
   osmb;
+var checkrijden = false;
 var routelayertest, LayerGroup10;
 var loadmap = "normal";
 var i = 0;
@@ -311,10 +312,21 @@ function stopRoute() {
 }
 
 $("#Btn7").click(function() {
-  map.locate({
-    watch: true,
-    setView: true,
-    maxZoom: 18,
-    enableHighAccuracy: true
-  });
+  if (checkrijden == true) {
+    map.locate({
+      watch: true,
+      setView: false,
+      maxZoom: 18,
+      enableHighAccuracy: true
+    });
+    checkrijden = false;
+  } else if (checkrijden == false) {
+    map.locate({
+      watch: true,
+      setView: true,
+      maxZoom: 18,
+      enableHighAccuracy: true
+    });
+    checkrijden = true;
+  }
 });
