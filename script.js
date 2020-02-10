@@ -356,3 +356,12 @@ function showRoute(){
   document.getElementById("Btn12").style.display = "none";
   
 }
+}
+
+//cursor on move
+$("#map").mousedown(function() {
+  $(this).css("cursor", "all-scroll");
+});
+$("#map").mouseup(function() {
+  $(this).css("cursor", "auto");
+});
