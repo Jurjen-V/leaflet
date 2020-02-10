@@ -67,7 +67,6 @@
             <p href="#name"><span class="white-text name">Route beschrijving</span></p>
         </div>
     </li>
-    <li><div class="divider"></div></li>
     <li>
         <div id="route-narrative" class="Route">
             <div id="text_box"></div>
