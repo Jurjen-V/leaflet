@@ -44,6 +44,18 @@
   border: none;
   color: white;
 }
+#Btn11, #Btn12{
+  right: 0;
+  top:0;
+  padding: 0;
+}
+.button_box_route{
+  right: 0;
+  position: absolute;
+}
+#text_box{
+  margin-top: 25px;
+}
 .active {
   background-color: #4285f4;
   color: white;

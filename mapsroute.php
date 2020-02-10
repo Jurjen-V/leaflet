@@ -30,7 +30,15 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div id="route-narrative" class="Route"></div>
+<div class="button_box_route leaflet-right leaflet-top">
+    <button type="button" id="Btn12" value="Show" onclick="showRoute()" class="btnStyle span3 leaflet-control Button"><i class="material-icons">arrow_drop_down</i></button>
+</div>
+<div id="route-narrative" class="Route">
+    <div class="button_box_route">
+        <button type="button" id="Btn11" value="Hide" onclick="hideRoute()" class="btnStyle span3 leaflet-control Button"><i class="material-icons">close</i></button>
+    </div>
+    <div id="text_box"></div>
+</div>
 
 <div class="span9" style="height:100%">
     <div id="map">

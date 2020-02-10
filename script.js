@@ -1,6 +1,7 @@
 document.getElementById("Btn6").style.display = "none";
 document.getElementById("route-narrative").style.display = "none";
 document.getElementById("Btn10").style.display = "none";
+document.getElementById("Btn12").style.display = "none";
 var current_position,
   circle,
   polyline,
@@ -245,8 +246,9 @@ function route(latlng, latlng2) {
         html += maneuvers[i].narrative + "";
         html += "<br>";
       }
+        document.getElementById("Btn12").style.display = "none";
       document.getElementById("route-narrative").style.display = "inline-block";
-      L.DomUtil.get("route-narrative").innerHTML = html;
+      L.DomUtil.get("text_box").innerHTML = html;
     }
   });
 
@@ -321,6 +323,7 @@ function stopRoute() {
   }
   document.getElementById("Btn6").style.display = "none";
   document.getElementById("Btn10").style.display = "none";
+  document.getElementById("Btn12").style.display = "none";
   document.getElementById("route-narrative").style.display = "none";
   document.getElementById("Btn5").style.display = "inline-block";
 }
@@ -343,3 +346,13 @@ $("#Btn10").click(function() {
   }
   document.getElementById("Btn10").classList.toggle("active");
 });
+function hideRoute(){
+  document.getElementById("route-narrative").style.display = "none";
+  document.getElementById("Btn12").style.display = "block";
+
+}
+function showRoute(){
+  document.getElementById("route-narrative").style.display = "block";
+  document.getElementById("Btn12").style.display = "none";
+  
+}
