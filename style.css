@@ -9,7 +9,7 @@
   bottom: 80px;
 }
 .Route {
-  max-height: 100px;
+  max-height: 20%;
   max-width: 80%;
   overflow: auto;
   background-color: white;
@@ -33,6 +33,9 @@
   display: inline-block;
   background-repeat: no-repeat;
   float: none !important;
+}
+#Btn4, #Btn7{
+  float: right !important;
 }
 .Button:hover,
 .Button1:hover {
