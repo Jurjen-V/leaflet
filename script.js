@@ -306,6 +306,22 @@ function route(latlng, latlng2) {
 
 //stop route
 function stopRoute() {
+  if(document.getElementById("Btn10").classList.contains("active")){
+      document.getElementById("Btn10").classList.toggle("active");
+    map.locate({
+      watch: true,
+      setView: false,
+      maxZoom: 18,
+      enableHighAccuracy: true
+    });
+  }else{
+    map.locate({
+      watch: true,
+      setView: true,
+      maxZoom: 18,
+      enableHighAccuracy: true
+    });
+  }
   if (LayerGroup10) {
     LayerGroup10.clearLayers();
   }
