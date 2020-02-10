@@ -365,7 +365,19 @@ $("#map").mousedown(function() {
 $("#map").mouseup(function() {
   $(this).css("cursor", "auto");
 });
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, {});
+
+function sidenavopen() {
+  document.getElementById("sidenav").style.display = "none";
+}
+
+function sidenavclose() {
+  document.getElementById("sidenav").style.display = "block";
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  var elems = document.querySelectorAll(".sidenav");
+  var instances = M.Sidenav.init(elems, {
+    onCloseEnd: sidenavclose,
+    onOpenStart: sidenavopen
+  });
 });
