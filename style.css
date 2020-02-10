@@ -14,7 +14,7 @@
   overflow: auto;
   background-color: white;
   padding: 10px;
-  box-shadow: 10px 10px rgba(0,0,0,.25);
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.25);
   pointer-events: auto;
   position: absolute;
   right: 0;
@@ -34,7 +34,8 @@
   background-repeat: no-repeat;
   float: none !important;
 }
-#Btn4, #Btn10{
+#Btn4,
+#Btn10 {
   float: right !important;
 }
 .Button:hover,
