@@ -28,11 +28,10 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- own css -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- favicon icon -->
-    <!-- <link rel="shortcut icon" type="image/png" href="http://example.com/favicon.png"/> -->
 </head>
 <body>
-    <div id="route-narrative" class="Route"></div>
+<div id="route-narrative" class="Route"></div>
+
 <div class="span9" style="height:100%">
     <div id="map">
 
@@ -41,7 +40,8 @@
             <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">satellite</i></button> 
             <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">map</i></button>
             <button type="button" id="Btn5" value="route" onclick="route(current_position,marker)" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">directions</i></button>
-            <button type="button" id="Btn6" value="" onclick="stopRoute()" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>stop</i></button>
+            <button type="button" id="Btn6" value="" onclick="stopRoute()" class="btnStyle span3 leaflet-control Button"><i class='material-icons'>stop</i></button>
+            <button type="button" id="Btn10" value="" class="btnStyle span3 leaflet-control Button"><i class='material-icons'>drive_eta</i></button>
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>

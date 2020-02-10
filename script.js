@@ -11,7 +11,6 @@ var current_position,
   i,
   e,
   osmb;
-var routecheck = false;
 var routelayertest, LayerGroup10;
 var loadmap = "normal";
 var i = 0;
@@ -144,6 +143,7 @@ function onLocationFound(e) {
     fillOpacity: 0.5,
     radius: 12
   }).addTo(map);
+
   map.addLayer(circle);
   map.addLayer(current_position);
 }
@@ -299,17 +299,22 @@ function route(latlng, latlng2) {
     directions: dir,
     fitBounds: true
   }).addTo(LayerGroup10);
-  //update check
-  routecheck = true;
 }
 
 //stop route
 function stopRoute() {
   if (LayerGroup10) {
-    // console.log(LayerGroup10);
-    routecheck = false;
     LayerGroup10.clearLayers();
   }
   document.getElementById("Btn6").style.display = "none";
   document.getElementById("Btn5").style.display = "inline-block";
 }
+
+$("#Btn10").click(function() {
+  map.locate({
+    watch: true,
+    setView: true,
+    maxZoom: 18,
+    enableHighAccuracy: true
+  });
+});
