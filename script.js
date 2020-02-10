@@ -310,7 +310,7 @@ function stopRoute() {
   document.getElementById("Btn5").style.display = "inline-block";
 }
 
-$("#Btn10").click(function() {
+$("#Btn7").click(function() {
   map.locate({
     watch: true,
     setView: true,
