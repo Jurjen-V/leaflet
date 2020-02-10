@@ -73,12 +73,10 @@
     <button class="btnStyle leaflet-control">
         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </button>
-  </div>
-
+</div>
 
 </body>
 <!-- own js -->
-<script src="script.js">
-</script>
+<script src="script.js"></script>
 </html>
 
