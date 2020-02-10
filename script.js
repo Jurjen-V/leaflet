@@ -1,6 +1,6 @@
 document.getElementById("Btn6").style.display = "none";
 document.getElementById("route-narrative").style.display = "none";
-  document.getElementById("Btn10").style.display = "none";
+document.getElementById("Btn10").style.display = "none";
 var current_position,
   circle,
   polyline,
@@ -306,39 +306,34 @@ function route(latlng, latlng2) {
 
 //stop route
 function stopRoute() {
-  if(document.getElementById("Btn10").classList.contains("active")){
-      document.getElementById("Btn10").classList.toggle("active");
+  if (document.getElementById("Btn10").classList.contains("active")) {
+    document.getElementById("Btn10").classList.toggle("active");
     map.locate({
       watch: true,
       setView: false,
       maxZoom: 18,
       enableHighAccuracy: true
     });
-  }else{
-    map.locate({
-      watch: true,
-      setView: true,
-      maxZoom: 18,
-      enableHighAccuracy: true
-    });
   }
+
   if (LayerGroup10) {
     LayerGroup10.clearLayers();
   }
   document.getElementById("Btn6").style.display = "none";
   document.getElementById("Btn10").style.display = "none";
+  document.getElementById("route-narrative").style.display = "none";
   document.getElementById("Btn5").style.display = "inline-block";
 }
 
 $("#Btn10").click(function() {
-  if(document.getElementById("Btn10").classList.contains("active")){
+  if (document.getElementById("Btn10").classList.contains("active")) {
     map.locate({
       watch: true,
       setView: false,
       maxZoom: 18,
       enableHighAccuracy: true
     });
-  }else{
+  } else {
     map.locate({
       watch: true,
       setView: true,
