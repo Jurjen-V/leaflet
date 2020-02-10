@@ -51,9 +51,6 @@
             <button type="button" id="Btn10" value="" class="btnStyle span3 leaflet-control Button"><i class='material-icons'>drive_eta</i></button>
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
         </div>
-        <button class="btnStyle leaflet-control">
-            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        </button>
     </div>
 </div>
 
