@@ -1,6 +1,7 @@
 .button_box {
   position: absolute;
   bottom: 10%;
+  padding-left: 10px;
 }
 .button_box2 {
   position: absolute;
