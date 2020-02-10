@@ -1,17 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
-  var elems = document.querySelectorAll(".sidenav");
-  var instances = M.Sidenav.init(elems, {
-    onCloseEnd: sidenavclose,
-    onOpenStart: sidenavopen
-  });
-});
-
 document.getElementById("Btn6").style.display = "none";
 document.getElementById("route-narrative").style.display = "none";
 document.getElementById("Btn10").style.display = "none";
 document.getElementById("Btn12").style.display = "none";
-document.getElementsByClassName("geocoder-control-input").placeholder =
-  "Zoek een plaats..";
 var current_position,
   circle,
   polyline,
@@ -387,3 +377,11 @@ function sidenavopen() {
 function sidenavclose() {
   document.getElementById("sidenav").style.display = "block";
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  var elems = document.querySelectorAll(".sidenav");
+  var instances = M.Sidenav.init(elems, {
+    onCloseEnd: sidenavclose,
+    onOpenStart: sidenavopen
+  });
+});
