@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Leaflet</title>
+    <!-- materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- cdn leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -14,8 +18,6 @@
     <!-- osm -->
     <script src="https://cdn.osmbuildings.org/classic/0.2.2b/OSMBuildings-Leaflet.js"></script>  
     <script src="//cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.7/esri-leaflet.js"></script>
-    <!-- icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- route -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=AabzipTGobBGH6xSsK1Vb6PD40W58ep3"></script>
@@ -44,7 +46,6 @@
 
 <div class="span9" style="height:100%">
     <div id="map">
-
         <div class="leaflet-bottom leaflet-right button_box" style="display:inline-block;">
             <button type="button" id="Btn1" value="Osm" onclick="loadkaart('osm')" class="btnStyle span3 leaflet-control Button"><i class="material-icons">3d_rotation</i></button>
             <button type="button" id="Btn2" value="Satellite" onclick="loadkaart('satellite')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">satellite</i></button> 
@@ -58,8 +59,26 @@
         </div>
     </div>
 </div>
+
+<ul id="slide-out" class="sidenav">
+    <li>
+        <div class="user-view">
+            <p>HOI</p>
+        </div>
+    </li>
+</ul>
+
+<div class="leaflet-top leaflet-left">
+    <br><br><br>
+    <button class="btnStyle leaflet-control">
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </button>
+  </div>
+
+
 </body>
 <!-- own js -->
-<script src="script.js"></script>
+<script src="script.js">
+</script>
 </html>
 
