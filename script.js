@@ -1,5 +1,6 @@
 document.getElementById("Btn6").style.display = "none";
 document.getElementById("route-narrative").style.display = "none";
+  document.getElementById("Btn10").style.display = "none";
 var current_position,
   circle,
   polyline,
@@ -226,6 +227,7 @@ function route(latlng, latlng2) {
   }
   document.getElementById("Btn6").style.display = "inline-block";
   document.getElementById("Btn5").style.display = "none";
+  document.getElementById("Btn10").style.display = "inline-block";
   map.addLayer(marker);
 
   dir = MQ.routing.directions().on("success", function(data) {
@@ -307,14 +309,25 @@ function stopRoute() {
     LayerGroup10.clearLayers();
   }
   document.getElementById("Btn6").style.display = "none";
+  document.getElementById("Btn10").style.display = "none";
   document.getElementById("Btn5").style.display = "inline-block";
 }
 
 $("#Btn10").click(function() {
-  map.locate({
-    watch: true,
-    setView: true,
-    maxZoom: 18,
-    enableHighAccuracy: true
-  });
+  if(document.getElementById("Btn10").classList.contains("active")){
+    map.locate({
+      watch: true,
+      setView: false,
+      maxZoom: 18,
+      enableHighAccuracy: true
+    });
+  }else{
+    map.locate({
+      watch: true,
+      setView: true,
+      maxZoom: 18,
+      enableHighAccuracy: true
+    });
+  }
+  document.getElementById("Btn10").classList.toggle("active");
 });

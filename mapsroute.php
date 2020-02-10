@@ -41,9 +41,9 @@
             <button type="button" id="Btn3" value="Kaart" onclick="loadkaart('normal')" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">map</i></button>
             <button type="button" id="Btn5" value="route" onclick="route(current_position,marker)" class="btnStyle span3 leaflet-control Button" ><i class="material-icons">directions</i></button>
             <button type="button" id="Btn6" value="" onclick="stopRoute()" class="btnStyle span3 leaflet-control Button"><i class='material-icons'>stop</i></button>
-            <button type="button" id="Btn10" value="" class="btnStyle span3 leaflet-control Button"><i class='material-icons'>drive_eta</i></button>
         </div>
         <div class="leaflet-bottom leaflet-right button_box2">
+            <button type="button" id="Btn10" value="" class="btnStyle span3 leaflet-control Button"><i class='material-icons'>drive_eta</i></button>
             <button type="button" id="Btn4" value="" onclick="setview(current_position)" class="btnStyle span3 leaflet-control Button"> <i class='material-icons'>my_location</i></button>
         </div>
     </div>
