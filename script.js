@@ -1,7 +1,7 @@
 document.getElementById("Btn6").style.display = "none";
 document.getElementById("route-narrative").style.display = "none";
 document.getElementById("Btn10").style.display = "none";
-document.getElementById("Btn12").style.display = "none";
+document.getElementById("Btn12").style.display = "none";  
 var current_position,
   circle,
   polyline,
@@ -203,7 +203,13 @@ function test(clicked, e) {
   }
 }
 //zoekbalk
-var searchControl = new L.esri.Controls.Geosearch().addTo(map);
+var sidenav = L.map('sidenav', { zoomControl: false });
+var searchControl = new L.esri.Controls.Geosearch().addTo(sidenav);
+var list, index;
+list = document.getElementsByClassName("geocoder-control-input");
+for (index = 0; index < list.length; ++index) {
+    list[index].setAttribute('placeholder', "Zoek een plaats...");
+}
 var results = new L.LayerGroup().addTo(map);
 searchControl.on("results", function(data) {
   if (marker) {

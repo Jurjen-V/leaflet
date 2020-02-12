@@ -9,8 +9,8 @@
   bottom: 80px;
 }
 .Route {
-  max-height: 70%;
-  width: calc(100% - 20px);
+  max-height: 75%;
+  width: calc(100%);
   overflow: auto;
   background-color: white;
   padding: 10px;
@@ -67,13 +67,24 @@ body,
 }
 
 /*zoek balk*/
+.leaflet-top, .leaflet-left{
+  left: 25px;
+  width: 100%;
+}
+.geocoder-control{
+  width: 100% !important;
+}
 .geocoder-control-input {
+  width: calc(100% - 40px) !important;
   float: right;
-  box-shadow: 10px 10px rgba(0, 0, 0, 0.25);
   padding: 6px 10px;
   margin-top: 8px;
+  top: -10px;
   font-size: 17px;
-  border: none;
+  border: none !important;
+}
+.gecoder-control-input:focus{
+  width: calc(100% - 25px)
 }
 .gecoder-control-input:hover {
   background: #ccc;
@@ -81,4 +92,14 @@ body,
 #map {
   z-index: 0;
   position: absolute !important;
+}
+.sidenav_box{
+  margin: 10px;
+  width: 20%;
+  background-color: white;
+}
+@media only screen and (max-width: 600px) {
+  .sidenav_box{
+    width: calc(100% - 70px);
+  }
 }
