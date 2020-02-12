@@ -370,6 +370,12 @@ $("#map").mouseup(function() {
   $(this).css("cursor", "auto");
 });
 
+function closeSideNav() {
+  var elems = document.querySelectorAll(".sidenav");
+  var instance = M.Sidenav.getInstance(elems, {});
+  instance.close();
+}
+
 function sidenavopen() {
   document.getElementById("sidenav").style.display = "none";
 }
