@@ -98,9 +98,6 @@ body,
   width: 20%;
   background-color: white;
 }
-.sidenav_box:focus{
-  height: 100%;
-}
 #sidenav:focus-within {
   height: 25%;
 }
