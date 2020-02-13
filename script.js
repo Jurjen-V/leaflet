@@ -210,7 +210,7 @@ list = document.getElementsByClassName("geocoder-control-input");
 for (index = 0; index < list.length; ++index) {
   list[index].setAttribute("placeholder", "Zoek een plaats...");
 }
-var results = new L.LayerGroup().addTo(map);
+var results = new L.LayerGroup().addTo(sidenav);
 searchControl.on("results", function(data) {
   if (marker) {
     map.removeLayer(marker);

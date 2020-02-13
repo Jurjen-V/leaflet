@@ -98,6 +98,16 @@ body,
   width: 20%;
   background-color: white;
 }
+.sidenav_box:focus{
+  height: 100%;
+}
+#sidenav:focus-within {
+  height: 25%;
+}
+.geocoder-control-suggestions {
+  margin-top: 0px;
+  width: calc(100% - 40px);
+}
 @media only screen and (max-width: 600px) {
   .sidenav_box{
     width: calc(100% - 70px);
