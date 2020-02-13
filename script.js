@@ -1,7 +1,7 @@
 document.getElementById("Btn6").style.display = "none";
 document.getElementById("route-narrative").style.display = "none";
 document.getElementById("Btn10").style.display = "none";
-document.getElementById("Btn12").style.display = "none";  
+document.getElementById("Btn12").style.display = "none";
 var current_position,
   circle,
   polyline,
@@ -203,12 +203,12 @@ function test(clicked, e) {
   }
 }
 //zoekbalk
-var sidenav = L.map('sidenav', { zoomControl: false });
+var sidenav = L.map("sidenav", { zoomControl: false });
 var searchControl = new L.esri.Controls.Geosearch().addTo(sidenav);
 var list, index;
 list = document.getElementsByClassName("geocoder-control-input");
 for (index = 0; index < list.length; ++index) {
-    list[index].setAttribute('placeholder', "Zoek een plaats...");
+  list[index].setAttribute("placeholder", "Zoek een plaats...");
 }
 var results = new L.LayerGroup().addTo(sidenav);
 searchControl.on("results", function(data) {
@@ -217,9 +217,9 @@ searchControl.on("results", function(data) {
   }
   loadkaart("normal");
   results.clearLayers();
-  for (var i = data.results.length - 1; i >= 0; i--) {
-    results.addLayer((marker = new L.marker(data.results[i].latlng)));
-  }
+  // for (var i = data.results.length - 1; i >= 0; i--) {
+  results.addLayer((marker = new L.marker(data.results[i].latlng)));
+  // }
   route(current_position, marker);
 });
 
