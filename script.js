@@ -385,15 +385,3 @@ document.addEventListener("DOMContentLoaded", function() {
     onOpenStart: sidenavopen
   });
 });
-var textareas = document.getElementsByTagName('input');
-    
-for (i=0;i<textareas.length;i++){
-  if (textareas[i].parentNode.className.toString().toLowerCase() == 'sidenav_box') {
-    textareas[i].onfocus = function(){
-      this.parentNode.style.heigth = '100%';
-    }
-    textareas[i].onblur = function(){
-      this.parentNode.style.height = '50%';
-    }
-  }
-}
